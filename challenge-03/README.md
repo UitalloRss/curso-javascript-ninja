@@ -193,24 +193,22 @@ correta, de acordo com os dados inseridos no objeto.
 pessoa.apresentacao = function(){
     var resposta = 'Olá, eu sou o ' + pessoa.nome + ' ' + pessoa.sobrenome + ', tenho ' + pessoa.idade + ' anos, ' + pessoa.altura + 'm, meu peso é ' + pessoa.peso + 'kg e, só hoje, eu já caminhei ' + pessoa.caminhouQuantosMetros + ' metros!';
     var respostaAlterada;
-
+    var sexo = 'o';
+    var idadeAnos = 'anos';
+    var metros = 'metros'
     if (pessoa.sexo === 'Feminino'){
-        respostaAlterada = resposta.replace(' o ', ' a ');
+        sexo = 'a';
     }
 
     if (pessoa.idade == 1){
-        respostaAlterada = resposta.replace('anos', 'ano');
+        idadeAnos = 'ano';
     }
 
     if (pessoa.caminhouQuantosMetros == 1){
-        respostaAlterada = resposta.replace('metros', 'metro');
+        metros = 'metro';
     }
 
-    if (respostaAlterada == undefined){
-        return resposta;
-    }else{
-        return respostaAlterada;
-    }
+    return 'Olá, eu sou ' + sexo + ' ' + pessoa.nome + ' ' + pessoa.sobrenome + ', tenho ' + pessoa.idade + ' ' + idadeAnos + ', ' + pessoa.altura + 'm, meu peso é ' + pessoa.peso + 'kg e, só hoje, eu já caminhei ' + pessoa.caminhouQuantosMetros + ' ' + metros + '!';
 }
 
 // Agora, apresente-se ;)
