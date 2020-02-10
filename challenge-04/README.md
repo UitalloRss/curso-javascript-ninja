@@ -91,7 +91,7 @@ Crie um método chamado `obterMarcaModelo`, que retorne:
 Para retornar os valores de marca e modelo, utilize os métodos criados.
 */
 carro.obterMarcaModelo = function(){
-    return 'Esse carro é um ' + carro.marca + ' ' + carro.modelo;
+    return 'Esse carro é um ' + carro.obterMarca() + ' ' + carro.obterModelo();
 }
 
 /*
@@ -113,16 +113,15 @@ citado acima, no lugar de "pessoas".
 carro.adicionarPessoasNoCarro = function(colocarPessoas){
     if (carro.quantidadeDePessoas == carro.assentos){
         return 'O carro já está lotado';
-    }else if((carro.quantidadeDePessoas + colocarPessoas) > carro.assentos){
+    }
+    if((carro.quantidadeDePessoas + colocarPessoas) > carro.assentos){
         var soCabeNoCarro = carro.assentos - carro.quantidadeDePessoas;
-        if(carro.quantidadeDePessoas - carro.assentos == 1){
-            return 'Só cabe mais ' + soCabeNoCarro + ' pessoa.'
-        }else{
-            return 'Só cabem mais ' + soCabeNoCarro + ' pessoas.'
-        }
+        var pessoaOuPessoas = soCabeNoCarro === 1 ? ' pessoa.' : ' pessoas.';
+        var cabeOuCabem = soCabeNoCarro === 1 ? ' cabe' : ' cabem'; 
+        return 'Só' + cabeOuCabem + ' mais ' + soCabeNoCarro + pessoaOuPessoas;
     }else{
         carro.quantidadeDePessoas += colocarPessoas;
-        return 'Já temos ' + carro.quantidadeDePessoas + ' no carro.';
+        return 'Já temos ' + carro.quantidadeDePessoas + ' pessoas no carro.';
     }
 }
 
@@ -134,38 +133,38 @@ retornar algum valor.
 
 Qual a cor atual do carro?
 */
-?
+carro.cor; //'Branco';
 
 // Mude a cor do carro para vermelho.
-?
+carro.
 
 // E agora, qual a cor do carro?
-?
+carro.mudaCor('Vermelho');
 
 // Mude a cor do carro para verde musgo.
-?
+carro.mudaCor('Verde Musgo');
 
 // E agora, qual a cor do carro?
-?
+//'Verde Musgo'
 
 // Qual a marca e modelo do carro?
-?
+carro.obterMarcaModelo(); //'Esse carro é um Ford Focus'
 
 // Adicione 2 pessoas no carro.
-?
+carro.adicionarPessoasNoCarro(2); //'Já temos 2 pessoas no carro.'
 
 // Adicione mais 4 pessoas no carro.
-?
+carro.adicionarPessoasNoCarro(4); //'Só cabem mais 3 pessoas.'
 
 // Faça o carro encher.
-?
+carro.adicionarPessoasNoCarro(3); //'Já temos 5 pessoas no carro.'
 
 // Tire 4 pessoas do carro.
-?
+carro.quantidadeDePessoas = 1;
 
 // Adicione 10 pessoas no carro.
-?
+carro.adicionarPessoasNoCarro(10); //'Só cabem mais 4 pessoas.'
 
 // Quantas pessoas temos no carro?
-?
+carro.quantidadeDePessoas; //1
 ```
