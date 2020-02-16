@@ -6,13 +6,13 @@ var variavel = [2, true, 'Uítalo', undefined, 5.87];
 /*
 Crie uma função que receba um array como parâmetro, e retorne esse array.
 */
-function retornaArray(variavel){
-    return variavel;
+function retornaArray(arr){
+    return arr;
 }
 /*
 Imprima o segundo índice do array retornado pela função criada acima.
 */
-retornaArray(variavel[1]);
+console.log(retornaArray(variavel)[1]);
 /*
 Crie uma função que receba dois parâmetros: o primeiro, um array de valores; e o
 segundo, um número. A função deve retornar o valor de um índice do array que foi passado
@@ -74,6 +74,8 @@ function book(nomeDoLivro){
         return livros;
     }
 
+    //return !nomeDoLivro ? livros : livros[nomeDoLivro]; - ternário
+
     return livros[nomeDoLivro];
 }
 
@@ -86,17 +88,19 @@ Ainda com a função acima, imprima a quantidade de páginas de um livro qualque
 usando a frase:
 "O livro [NOME_DO_LIVRO] tem [X] páginas!"
 */
-console.log ('O livro Capitães de Areia tem ' + book('Capitães de Areia').quantidadeDePaginas + ' páginas!');
+
+var nomeDoLivro = 'Capitães de Areia';
+console.log ('O livro ' + nomeDoLivro + ' tem ' + book(nomeDoLivro).quantidadeDePaginas + ' páginas!');
 
 /*
 Ainda com a função acima, imprima o nome do autor de um livro qualquer, usando
 a frase:
 "O autor do livro [NOME_DO_LIVRO] é [AUTOR]."
 */
-console.log ('O autor do livro Grande Sertão veredas é ' + book('Grande Sertão veredas').autor + '.');
+console.log ('O autor do livro ' + nomeDoLivro  + ' é ' + book(nomeDoLivro).autor + '.');
 /*
 Ainda com a função acima, imprima o nome da editora de um livro qualquer, usando
 a frase:
 "O livro [NOME_DO_LIVRO] foi publicado pela editora [NOME_DA_EDITORA]."
 */
-console.log('o livro Dom Casmurro foi publicado pela editora ' + book('Dom Casmurro').editora + '.');
+console.log('o livro ' + nomeDoLivro +  ' foi publicado pela editora ' + book(nomeDoLivro).editora + '.');
