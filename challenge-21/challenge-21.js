@@ -21,7 +21,7 @@
     var $stop = document.querySelector('[data-js="stop"]');
     var $reset = document.querySelector('[data-js="reset"]');
     var contaTempo;
-    $start.addEventListener('click', iniciaCronometro, false);
+    $start.addEventListener('click', iniciaCronometro, false); //QUANDO CHAMAR UMA FUNÇÃO EXTERNA, NÃO COLOCAR OS PARENTESIS PARA INVOCAR, POIS SÓ QUEREMOS A EXECUÇÃO DELA A PARTIR DO CLIQUE, PORTANDO SÓ COLOCAMOS O NOME DA FUNÇÃO COMO REFERÊNCIA.
     $stop.addEventListener('click', paraCronometro, false);
     $reset.addEventListener('click', resetaCronometro, false);
 
