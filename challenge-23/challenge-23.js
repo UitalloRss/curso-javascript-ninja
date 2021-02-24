@@ -1,3 +1,5 @@
+(function(window, document){
+'use strict'    
 /*
 Vamos desenvolver mais um projeto. A ideia é fazer uma mini-calculadora.
 As regras são:
@@ -23,3 +25,38 @@ multiplicação (x), então no input deve aparecer "1+2x".
 input;
 - Ao pressionar o botão "CE", o input deve ficar zerado.
 */
+var $telaCalculadora = document.querySelector('[data-js="tela-calculadora"]');
+var $resetaCalculadora = document.querySelector('[data-js="reset"]');
+var $numeros = document.querySelectorAll('[data-js="numeros"]');
+var $operacoes = document.querySelectorAll('[data-js="operacoes"]')
+
+Array.prototype.forEach.call($numeros, function(button){
+    button.addEventListener('click', handleClick, false);
+    console.log(button);
+})
+
+Array.prototype.forEach.call($operacoes, function(button){
+    button.addEventListener('click', addOperacoes, false);
+    console.log(button);
+})
+
+
+$resetaCalculadora.addEventListener('click', resetaTela, false);
+
+function handleClick(){
+    $telaCalculadora.value += this.value;
+}
+
+function addOperacoes(){
+    var operacoes = ['+', '-', '*', '/'];
+    if(true){
+        $telaCalculadora.value = $telaCalculadora.value.slice(0, -1);
+    }
+    $telaCalculadora.value += this.value;
+}
+
+function resetaTela(){
+    $telaCalculadora.value = 0;
+}
+
+})(window, document);
