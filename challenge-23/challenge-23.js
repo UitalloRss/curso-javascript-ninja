@@ -28,7 +28,8 @@ input;
 var $telaCalculadora = document.querySelector('[data-js="tela-calculadora"]');
 var $resetaCalculadora = document.querySelector('[data-js="reset"]');
 var $numeros = document.querySelectorAll('[data-js="numeros"]');
-var $operacoes = document.querySelectorAll('[data-js="operacoes"]')
+var $operacoes = document.querySelectorAll('[data-js="operacoes"]');
+var $btnigual = document.querySelector('[data-js="igual"]')
 
 Array.prototype.forEach.call($numeros, function(button){
     button.addEventListener('click', handleClick, false);
@@ -40,6 +41,7 @@ Array.prototype.forEach.call($operacoes, function(button){
     console.log(button);
 })
 
+$btnigual.addEventListener('click', handleClickEqual, false);
 
 $resetaCalculadora.addEventListener('click', resetaTela, false);
 
@@ -48,15 +50,52 @@ function handleClick(){
 }
 
 function addOperacoes(){
-    var operacoes = ['+', '-', '*', '/'];
-    if(true){
-        $telaCalculadora.value = $telaCalculadora.value.slice(0, -1);
-    }
+    $telaCalculadora.value = removeItemSeEleForOperacao($telaCalculadora.value);
     $telaCalculadora.value += this.value;
 }
 
 function resetaTela(){
     $telaCalculadora.value = 0;
 }
+
+function verificaSeUltimoItemEhOperador(number){
+    var operations = ['+', '-', '*', '/'];
+    var lastItem = number.split('').pop();
+    return operations.some(function(operator){
+        return operator === lastItem;
+    });
+}
+
+function removeItemSeEleForOperacao(number){
+    if(verificaSeUltimoItemEhOperador(number)){
+        return number.slice(0, -1);
+    }
+    return number;
+}
+
+function handleClickEqual(){
+    $telaCalculadora.value = removeItemSeEleForOperacao($telaCalculadora.value);
+    var tudoOQueEstaNaTela = $telaCalculadora.value.match(/\d+[+/*-]?/g);
+    var resultado = tudoOQueEstaNaTela.reduce(function(acumulado, atual){
+        var primeiroValor = acumulado.slice(0, -1);
+        var operador = acumulado.split('').pop();
+        var outroValor = removeItemSeEleForOperacao(atual);
+        var outroOperador = verificaSeUltimoItemEhOperador(atual) ? atual.split('').pop(): '';
+        switch(operador){
+            case '+':
+                return (Number(primeiroValor) + Number(outroValor)) + outroOperador;
+            case '-':
+                return (Number(primeiroValor) - Number(outroValor)) + outroOperador;
+            case '*':
+                return (Number(primeiroValor) * Number(outroValor)) + outroOperador;
+            case '/':
+                return (Number(primeiroValor) / Number(outroValor)) + outroOperador;
+        }
+    });
+    $telaCalculadora.value = resultado;
+    console.log(resultado);
+}
+
+
 
 })(window, document);
