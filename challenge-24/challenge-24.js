@@ -37,7 +37,10 @@ em funções, onde cada função faça somente uma única coisa, e faça bem fei
   }
 
   function handleClick(){
-      $telaCalculadora.value += this.value;
+    if($telaCalculadora.value[0] === '0'){
+        $telaCalculadora.value = '';
+    }
+    $telaCalculadora.value += this.value;
   }
 
   function addOperacoes(){
